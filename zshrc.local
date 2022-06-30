@@ -1,0 +1,30 @@
+export GREP_OPTIONS="--color=auto"
+export PATH="$HOME/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:$HOME/thoughtbot/dotfiles/bin:/usr/local/go/bin:$HOME/go/bin"
+export GOPATH="$HOME/go"
+export PATH="$HOME/.bin:$PATH"
+export NODE_ENV="development"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Source in Ruby versions
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+
+# Auto-attach New Shell Sessions
+_not_inside_tmux() { [[ -z "$TMUX" ]] }
+
+ensure_tmux_is_running() {
+  if _not_inside_tmux; then
+    tat
+  fi
+}
+
+ensure_tmux_is_running
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# Access to Yarn global executables
+export PATH="$PATH:`yarn global bin`"
+
+export PATH="$HOME/.bin:$PATH"
+eval "$(/opt/homebrew/bin/brew shellenv)"

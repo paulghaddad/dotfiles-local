@@ -1,0 +1,75 @@
+" Set encoding to UTF-8
+set encoding=utf-8
+
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+
+" add extra mapping for vim rspec
+map <Leader>a :call RunAllSpecs()<CR>
+
+" fzf fuzzy find configuration
+set rtp+=~/.fzf
+
+" Split edit your vimrc. Type space, v, r in sequence to trigger
+nmap <leader>vr :sp $MYVIMRC<cr>
+
+" Source (reload) your vimrc. Type space, s, o in sequence to trigger
+nmap <leader>so :source $MYVIMRC<cr>
+
+" Rapidly exit insert mode
+imap jk <esc>
+imap kj <esc>
+
+" Set highlight search by default
+set hlsearch
+
+" Toggle highlight search
+nnoremap <leader>nh :nohlsearch<cr>
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" Set relative number
+set relativenumber
+
+" Ignore case when searching
+set ignorecase
+
+" But use smartcase searching if I search with a capital word
+set smartcase
+
+" Dynamic window sizing when splitting and focusing
+set winwidth=84
+set winheight=5
+set winminheight=5
+set winheight=999
+
+" Use the OSX clipboard after yanking text
+set clipboard=unnamed
+
+" Emmet-Vim configuration
+let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
+
+" Ale configuration
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+let b:ale_fixers = ['prettier', 'eslint']
+let g:ale_fix_on_save = 1
+
+
+" Set colorscheme
+colorscheme default
+
+" Disable syntax highlighting for errors
+let g:ale_set_highlights = 0
